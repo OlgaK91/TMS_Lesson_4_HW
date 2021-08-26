@@ -21,11 +21,8 @@ public class Task3 {
         } else {
             String[] wordArray = fraze.split(" ");
             String ourWord = wordArray[wordNumber - 1];
-            int length = ourWord.length();
-            String reverse = "";
-            for (int i = length - 1; i >= 0; i--)
-                reverse = reverse + ourWord.charAt(i);
-            if (ourWord.equals(reverse)) {
+            String p = new StringBuilder(ourWord).reverse().toString();
+            if (ourWord.equals(p)) {
                 System.out.println("Word " + ourWord + " is a palindrome");
             } else {
                 System.out.println("Word " + ourWord + " isn't a palindrome");
