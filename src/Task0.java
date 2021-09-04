@@ -1,3 +1,4 @@
+import java.util.Locale;
 
 /**
  * 0.Написать программу со следующим функционалом:
@@ -58,12 +59,28 @@ public class Task0 {
     //Вывести на экран буквы из номера документа в формате "Letters:yyy/yyy/y/y" в верхнем регистре (реализовать с помощью класса StringBuilder)
     public static void printOnlyLettersLow(String docNumber) {
         StringBuilder p = new StringBuilder();
+        String[] StringArray = docNumber.split("-");
+        for (int i = 1; i < StringArray.length; i++){
+            if (i==StringArray.length-1){
+                for (int j=0;j<StringArray[i].length();j++) {
+                    if (Character.isLetter(StringArray[i].charAt(j)))
+                        p.append(StringArray[i].toUpperCase().charAt(j)+ "/");
+                }
+            }
+            else{
+                if (!StringArray[i].replaceAll("[0-9]", " ").isBlank()){
+                    p.append(StringArray[i].replaceAll("[0-9]", " ").toUpperCase() + "/");
+                }
+            }
 
-        for (int i = 1; i < docNumber.length(); i++) {
-            if (Character.isLetter(docNumber.charAt(i)))
-                p.append(docNumber.charAt(i));
         }
-        System.out.println(p);
+//        for (int i = 1; i < docNumber.length(); i++) {
+//            if (Character.isLetter(docNumber.charAt(i)))
+//                p.append(docNumber.charAt(i));
+//            else if(docNumber.charAt(i)=='-')
+//            {p.append("/");}
+//        }
+        System.out.println(p.substring(0,p.length()-1));
     }
 
     //Проверить содержит ли номер документа последовательность abc и вывети сообщение содержит или нет
